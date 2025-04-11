@@ -7,7 +7,10 @@ const Toolbar = ({
   onStartConnection,
   onCancelConnection, 
   connectionMode, 
-  selectedNode
+  selectedNode,
+  nodes,
+  links,
+  onLoadData
 }) => {
   console.log("Toolbar render - selectedNode:", selectedNode ? selectedNode.id : "none", "connectionMode:", connectionMode);
   
@@ -56,14 +59,20 @@ const Toolbar = ({
 
   const handleSave = () => {
     try {
+      // Create a data object with nodes and links
       const data = {
-        nodes: window.nodes,
-        links: window.links
+        nodes,
+        links
       };
       
+      // Convert to JSON string
       const json = JSON.stringify(data, null, 2);
+      
+      // Create a blob and save it
       const blob = new Blob([json], { type: 'application/json' });
       saveAs(blob, 'mindmap.json');
+      
+      console.log("Saved mindmap data:", data);
     } catch (error) {
       console.error('Error saving mindmap:', error);
       alert('Failed to save mindmap');
@@ -85,9 +94,9 @@ const Toolbar = ({
           const data = JSON.parse(event.target.result);
           
           if (data.nodes && data.links) {
-            // We would need to lift this state up to App.js
-            // This is just a placeholder for the UI
-            alert('File loaded successfully! (Note: Actual loading functionality would need to be implemented in App.js)');
+            // Pass the loaded data to the parent component
+            onLoadData(data);
+            console.log("Loaded mindmap data:", data);
           } else {
             alert('Invalid mindmap file format');
           }

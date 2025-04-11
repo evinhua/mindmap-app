@@ -159,6 +159,23 @@ function App() {
     setRenderKey(prev => prev + 1);
   };
 
+  const handleLoadData = (data) => {
+    if (data.nodes && Array.isArray(data.nodes)) {
+      setNodes(data.nodes);
+    }
+    
+    if (data.links && Array.isArray(data.links)) {
+      setLinks(data.links);
+    }
+    
+    setSelectedNode(null);
+    setConnectionMode(false);
+    setSourceNode(null);
+    setRenderKey(prev => prev + 1);
+    
+    console.log("Loaded data into state:", data);
+  };
+
   return (
     <div className="app-container">
       <div className="canvas-container">
@@ -168,6 +185,9 @@ function App() {
           onCancelConnection={handleCancelConnection}
           connectionMode={connectionMode}
           selectedNode={selectedNode}
+          nodes={nodes}
+          links={links}
+          onLoadData={handleLoadData}
         />
         <MindMap 
           key={`mindmap-${renderKey}`} // Force re-render when links change
