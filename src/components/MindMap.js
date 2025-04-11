@@ -27,7 +27,8 @@ const MindMap = ({
     svg.selectAll('*').remove();
 
     // Create a main group for all elements
-    const g = svg.append('g');
+    const g = svg.append('g')
+                 .attr('class', 'mindmap-content');
 
     // Draw a background rect to catch clicks
     g.append('rect')
@@ -60,6 +61,7 @@ const MindMap = ({
           // Draw a simple line with bright color for visibility
           g.append('line')
             .attr('id', `link-${link.id}`)
+            .attr('class', 'mindmap-link')
             .attr('x1', startX)
             .attr('y1', startY)
             .attr('x2', endX)
@@ -74,6 +76,7 @@ const MindMap = ({
           
           g.append('circle')
             .attr('id', `delete-${link.id}`)
+            .attr('class', 'mindmap-link-delete')
             .attr('r', 8)
             .attr('fill', 'blue')  // Use a bright color for testing
             .attr('cx', midX)
@@ -100,6 +103,7 @@ const MindMap = ({
       // Draw a temporary line from source node to mouse position
       const tempLine = g.append('line')
         .attr('id', 'temp-connection-line')
+        .attr('class', 'mindmap-temp-link')
         .attr('x1', startX)
         .attr('y1', startY)
         .attr('x2', startX) // Initially same as start point
@@ -124,7 +128,7 @@ const MindMap = ({
       
       nodes.forEach(node => {
         const nodeGroup = g.append('g')
-          .attr('class', `node ${selectedNode && node.id === selectedNode.id ? 'selected' : ''}`)
+          .attr('class', `node ${selectedNode && node.id === selectedNode.id ? 'selected' : ''} mindmap-node`)
           .attr('id', `node-${node.id}`)
           .attr('transform', `translate(${node.x}, ${node.y})`)
           .on('click', (event) => {
@@ -228,6 +232,9 @@ const MindMap = ({
       width="100%" 
       height="100%" 
       style={{ cursor: connectionMode ? 'crosshair' : 'default' }}
+      className="mindmap-svg"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
     />
   );
 };

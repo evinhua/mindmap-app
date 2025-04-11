@@ -24,7 +24,7 @@ const Toolbar = ({
         return;
       }
       
-      // Create a clone of the SVG to avoid modifying the original
+      // Create a deep clone of the SVG
       const svgClone = svgElement.cloneNode(true);
       
       // Set a white background
@@ -34,23 +34,49 @@ const Toolbar = ({
       rect.setAttribute('fill', 'white');
       svgClone.insertBefore(rect, svgClone.firstChild);
       
-      // Create a container for the SVG
-      const container = document.createElement('div');
-      container.appendChild(svgClone);
-      document.body.appendChild(container);
+      // Set explicit width and height
+      const boundingBox = svgElement.getBoundingClientRect();
+      svgClone.setAttribute('width', boundingBox.width);
+      svgClone.setAttribute('height', boundingBox.height);
       
-      // Convert to PNG
-      const dataUrl = await toPng(container, { 
-        backgroundColor: 'white',
-        width: svgElement.clientWidth,
-        height: svgElement.clientHeight
-      });
+      // Convert SVG to a data URL
+      const svgData = new XMLSerializer().serializeToString(svgClone);
+      const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+      const svgUrl = URL.createObjectURL(svgBlob);
       
-      // Remove the container
-      document.body.removeChild(container);
+      // Create an image from the SVG
+      const img = new Image();
+      img.onload = () => {
+        try {
+          // Create a canvas to draw the image
+          const canvas = document.createElement('canvas');
+          canvas.width = boundingBox.width;
+          canvas.height = boundingBox.height;
+          
+          // Draw the image on the canvas
+          const ctx = canvas.getContext('2d');
+          ctx.fillStyle = 'white';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0);
+          
+          // Convert canvas to PNG
+          canvas.toBlob((blob) => {
+            saveAs(blob, 'mindmap.png');
+            URL.revokeObjectURL(svgUrl);
+          });
+        } catch (error) {
+          console.error('Error creating PNG:', error);
+          alert('Failed to create PNG');
+        }
+      };
       
-      // Save the image
-      saveAs(dataUrl, 'mindmap.png');
+      img.onerror = () => {
+        console.error('Error loading SVG as image');
+        alert('Failed to load SVG as image');
+        URL.revokeObjectURL(svgUrl);
+      };
+      
+      img.src = svgUrl;
     } catch (error) {
       console.error('Error exporting mindmap:', error);
       alert('Failed to export mindmap');

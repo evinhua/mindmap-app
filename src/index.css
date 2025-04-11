@@ -62,18 +62,27 @@ code {
 }
 
 /* Make sure links are visible */
-line {
+.mindmap-link {
   stroke: #ff0000;
   stroke-width: 2px;
   stroke-opacity: 1;
 }
 
 /* Style for temporary link */
-#temp-link {
+.mindmap-temp-link {
   stroke: #00cc00;
   stroke-width: 3px;
   stroke-dasharray: 5,5;
   stroke-opacity: 1;
+}
+
+.mindmap-link-delete {
+  cursor: pointer;
+}
+
+.mindmap-svg {
+  width: 100%;
+  height: 100%;
 }
 
 .control-group {
