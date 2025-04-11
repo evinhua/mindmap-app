@@ -1,55 +1,75 @@
-# Mindmap Application
+# Mind Map Application
 
-A React application for creating and editing mindmaps using D3.js.
+An interactive mind map application built with React and D3.js that allows users to create, connect, and organize nodes visually.
 
 ## Features
 
-- Create text nodes with customizable properties
-- Connect nodes with lines
-- Edit node text, font, style, color, and more
+- Create nodes with customizable text
+- Connect nodes with interactive lines
+- Drag and reposition nodes while maintaining connections
 - Delete nodes and connections
-- Export mindmap as PNG
-- Save and load mindmaps as JSON files
+- Visual feedback during connection creation
+- Export mind maps as PNG images
+
+## Live Demo
+
+You can try the application here: [Mind Map App Demo](https://evinhua.github.io/mindmap-app/)
 
 ## Getting Started
 
-1. Clone this repository
-2. Install dependencies:
+### Prerequisites
+
+- Node.js and npm installed on your machine
+
+### Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/evinhua/mindmap-app.git
+   ```
+
+2. Navigate to the project directory:
    ```
    cd mindmap-app
+   ```
+
+3. Install dependencies:
+   ```
    npm install
    ```
-3. Start the development server:
+
+4. Start the development server:
    ```
    npm start
    ```
-4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser
+
+5. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## How to Use
 
-1. **Add a Node**: Click the "Add Node" button to create a new node
-2. **Edit a Node**: Click on a node to select it and edit its properties in the side panel
+1. **Add Nodes**: Click the "Add Node" button to create a new node
+2. **Select Nodes**: Click on a node to select it
 3. **Connect Nodes**: 
    - Select a node
-   - Click "Connect Nodes" button
+   - Click the "Connect Nodes" button
    - Click on another node to create a connection
-4. **Delete a Node**: Select a node and click the "Delete Node" button in the side panel
-5. **Delete a Connection**: Hover over the middle of a connection line and click the red dot that appears
-6. **Export Mindmap**: Click the "Export as PNG" button to save the mindmap as an image
-7. **Save/Load Mindmap**: Use the "Save" and "Load" buttons to save and load your mindmap as a JSON file
+4. **Move Nodes**: Drag nodes to reposition them (connections will follow)
+5. **Delete Connections**: Click on the blue circle in the middle of a connection
+6. **Delete Nodes**: Select a node and click "Delete Node" in the side panel
+7. **Edit Node Text**: Select a node and modify its text in the side panel
 
 ## Technologies Used
 
 - React
-- D3.js
-- html-to-image (for PNG export)
-- file-saver (for saving files)
-- uuid (for generating unique IDs)
+- D3.js for visualization and interactions
+- HTML5/CSS3
+- JavaScript ES6+
 
-## Future Improvements
+## License
 
-- Add undo/redo functionality
-- Implement zoom and pan for large mindmaps
-- Add different node shapes and connection styles
-- Support for nested nodes/hierarchical structures
-- Collaborative editing features
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Built with React and D3.js
+- Inspired by visual thinking and mind mapping techniques
