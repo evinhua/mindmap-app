@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/mindmap-app/static/css/main.d64d0b7d.css",
-    "main.js": "/mindmap-app/static/js/main.4e874c89.js",
+    "main.css": "/mindmap-app/static/css/main.2f2322f8.css",
+    "main.js": "/mindmap-app/static/js/main.e60bc49e.js",
     "index.html": "/mindmap-app/index.html",
-    "main.d64d0b7d.css.map": "/mindmap-app/static/css/main.d64d0b7d.css.map",
-    "main.4e874c89.js.map": "/mindmap-app/static/js/main.4e874c89.js.map"
+    "main.2f2322f8.css.map": "/mindmap-app/static/css/main.2f2322f8.css.map",
+    "main.e60bc49e.js.map": "/mindmap-app/static/js/main.e60bc49e.js.map"
   },
   "entrypoints": [
-    "static/css/main.d64d0b7d.css",
-    "static/js/main.4e874c89.js"
+    "static/css/main.2f2322f8.css",
+    "static/js/main.e60bc49e.js"
   ]
 }
