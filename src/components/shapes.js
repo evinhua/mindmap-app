@@ -1,5 +1,4 @@
 // Shape definitions for the mindmap app nodes
-import * as d3 from 'd3';
 
 // Shape generator functions that return SVG path data
 export const shapes = {
@@ -63,7 +62,6 @@ export const shapes = {
   hexagon: (width, height) => {
     return {
       path: (x, y) => {
-        const middleX = x + width / 2;
         const quarterWidth = width / 4;
         return `M${x + quarterWidth},${y}
                 L${x + width - quarterWidth},${y}
