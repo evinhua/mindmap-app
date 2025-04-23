@@ -159,3 +159,22 @@ button:disabled {
   border-radius: 20px;
   z-index: 1000;
 }
+/* Add styles for shape selection */
+.control-group select#node-shape {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.shape-preview {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+/* Add this to the end of your CSS file */

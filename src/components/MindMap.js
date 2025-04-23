@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
+import { getShapeData } from './shapes';
 
 const MindMap = ({ 
   nodes, 
@@ -137,20 +138,22 @@ const MindMap = ({
             onNodeClick(node);
           });
         
-        // Add rectangle
-        nodeGroup.append('rect')
-          .attr('width', node.width)
-          .attr('height', node.height)
-          .attr('rx', 5)
-          .attr('ry', 5)
+        // Get shape data based on node shape
+        const shape = node.shape || 'rectangle';
+        const shapeData = getShapeData(shape, node.width, node.height);
+        
+        // Add shape path
+        nodeGroup.append('path')
+          .attr('d', shapeData.path(0, 0))
           .style('fill', node.style.fill)
           .style('stroke', connectionMode && sourceNode && node.id !== sourceNode.id ? 'green' : node.style.stroke)
           .style('stroke-width', selectedNode && node.id === selectedNode.id ? '2px' : '1px');
         
         // Add text
+        const textPos = shapeData.textPosition(0, 0, node.width, node.height);
         nodeGroup.append('text')
-          .attr('x', node.width / 2)
-          .attr('y', node.height / 2)
+          .attr('x', textPos.x)
+          .attr('y', textPos.y)
           .attr('text-anchor', 'middle')
           .attr('dominant-baseline', 'middle')
           .style('font-size', node.style.fontSize)

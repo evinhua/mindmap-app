@@ -5,6 +5,7 @@ An interactive mind map application built with React and D3.js that allows users
 ## Features
 
 - Create nodes with customizable text
+- Choose from multiple node shapes (rectangle, ellipse, diamond, hexagon, cloud, parallelogram)
 - Connect nodes with interactive lines
 - Drag and reposition nodes while maintaining connections
 - Delete nodes and connections
@@ -49,14 +50,15 @@ You can try the application here: [Mind Map App Demo](https://evinhua.github.io/
 
 1. **Add Nodes**: Click the "Add Node" button to create a new node
 2. **Select Nodes**: Click on a node to select it
-3. **Connect Nodes**: 
+3. **Change Node Shape**: Select a node and choose a shape from the dropdown in the side panel
+4. **Connect Nodes**: 
    - Select a node
    - Click the "Connect Nodes" button
    - Click on another node to create a connection
-4. **Move Nodes**: Drag nodes to reposition them (connections will follow)
-5. **Delete Connections**: Click on the blue circle in the middle of a connection
-6. **Delete Nodes**: Select a node and click "Delete Node" in the side panel
-7. **Edit Node Text**: Select a node and modify its text in the side panel
+5. **Move Nodes**: Drag nodes to reposition them (connections will follow)
+6. **Delete Connections**: Click on the blue circle in the middle of a connection
+7. **Delete Nodes**: Select a node and click "Delete Node" in the side panel
+8. **Edit Node Text**: Select a node and modify its text in the side panel
 
 ## Technologies Used
 

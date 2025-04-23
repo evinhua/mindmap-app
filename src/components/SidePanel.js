@@ -10,6 +10,7 @@ const SidePanel = ({ node, onUpdateNode, onDeleteNode }) => {
   const [textAlign, setTextAlign] = useState('');
   const [fillColor, setFillColor] = useState('');
   const [strokeColor, setStrokeColor] = useState('');
+  const [nodeShape, setNodeShape] = useState('rectangle');
 
   useEffect(() => {
     if (node) {
@@ -22,6 +23,7 @@ const SidePanel = ({ node, onUpdateNode, onDeleteNode }) => {
       setTextAlign(node.style.textAlign);
       setFillColor(node.style.fill);
       setStrokeColor(node.style.stroke);
+      setNodeShape(node.shape || 'rectangle');
     }
   }, [node]);
 
@@ -64,10 +66,15 @@ const SidePanel = ({ node, onUpdateNode, onDeleteNode }) => {
     setFillColor(color);
     updateNode({ style: { ...node.style, fill: color } });
   };
-
+  
   const handleStrokeColorChange = (color) => {
     setStrokeColor(color);
     updateNode({ style: { ...node.style, stroke: color } });
+  };
+
+  const handleShapeChange = (e) => {
+    setNodeShape(e.target.value);
+    updateNode({ shape: e.target.value });
   };
 
   const updateNode = (updates) => {
@@ -210,6 +217,22 @@ const SidePanel = ({ node, onUpdateNode, onDeleteNode }) => {
             />
           ))}
         </div>
+      </div>
+
+      <div className="control-group">
+        <label htmlFor="node-shape">Node Shape</label>
+        <select
+          id="node-shape"
+          value={nodeShape}
+          onChange={handleShapeChange}
+        >
+          <option value="rectangle">Rectangle</option>
+          <option value="ellipse">Ellipse</option>
+          <option value="diamond">Diamond</option>
+          <option value="hexagon">Hexagon</option>
+          <option value="cloud">Cloud</option>
+          <option value="parallelogram">Parallelogram</option>
+        </select>
       </div>
 
       <button 

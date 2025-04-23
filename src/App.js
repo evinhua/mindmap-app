@@ -13,6 +13,7 @@ function App() {
       y: 200,
       width: 150,
       height: 60,
+      shape: 'rectangle',
       style: {
         fill: '#ffffff',
         stroke: '#000000',
@@ -31,6 +32,7 @@ function App() {
       y: 200,
       width: 150,
       height: 60,
+      shape: 'ellipse',
       style: {
         fill: '#ffffff',
         stroke: '#000000',
@@ -66,6 +68,7 @@ function App() {
       y: window.innerHeight / 2 - 100,
       width: 150,
       height: 60,
+      shape: 'rectangle',
       style: {
         fill: '#ffffff',
         stroke: '#000000',
